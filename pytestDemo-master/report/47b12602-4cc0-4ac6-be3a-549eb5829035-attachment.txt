@@ -1,0 +1,24 @@
+[2021-06-02 01:25:13,365][conftest.py 29][INFO]: ******************************
+[2021-06-02 01:25:13,365][conftest.py 30][INFO]: 前置步骤开始 ==>> 清理数据
+[2021-06-02 01:25:13,366][conftest.py 82][INFO]: 注册用户操作：清理用户--准备注册新用户
+[2021-06-02 01:25:13,366][conftest.py 83][INFO]: 执行前置SQL：DELETE FROM t_user WHERE username = 'plutoan'
+[2021-06-02 01:25:13,368][test_02_register_login_update.py 96][INFO]: *************** 开始执行用例 ***************
+[2021-06-02 01:25:13,368][rest_client.py 53][INFO]: 接口请求地址 ==>> http://10.5.15.116/videt-wisdom-star/register
+[2021-06-02 01:25:13,368][rest_client.py 54][INFO]: 接口请求方式 ==>> POST
+[2021-06-02 01:25:13,369][rest_client.py 57][INFO]: 接口请求头 ==>> {
+    "Content-Type": "application/json"
+}
+[2021-06-02 01:25:13,369][rest_client.py 58][INFO]: 接口请求 params 参数 ==>> null
+[2021-06-02 01:25:13,369][rest_client.py 59][INFO]: 接口请求体 data 参数 ==>> null
+[2021-06-02 01:25:13,369][rest_client.py 60][INFO]: 接口请求体 json 参数 ==>> {
+    "username": "测试test",
+    "password": "123456",
+    "sex": "1",
+    "telephone": "13599999999",
+    "address": "深圳市宝安区"
+}
+[2021-06-02 01:25:13,369][rest_client.py 61][INFO]: 接口上传附件 files 参数 ==>> None
+[2021-06-02 01:25:13,370][rest_client.py 62][INFO]: 接口 cookies 参数 ==>> null
+[2021-06-02 01:25:13,421][conftest.py 35][INFO]: 后置步骤开始 ==>> 清理数据
+[2021-06-02 01:25:13,422][conftest.py 87][INFO]: 注册用户操作：删除注册的用户
+[2021-06-02 01:25:13,422][conftest.py 88][INFO]: 执行后置SQL：DELETE FROM t_user WHERE username = 'plutoan'

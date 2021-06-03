@@ -1,0 +1,5 @@
+[32mINFO    [0m log:conftest.py:29 ******************************
+[32mINFO    [0m log:conftest.py:30 前置步骤开始 ==>> 清理数据
+[32mINFO    [0m log:conftest.py:97 修改用户操作：手工修改用户的手机号，以便用例重复执行
+[32mINFO    [0m log:conftest.py:98 执行SQL：UPDATE t_user SET phone = '1008612' WHERE email = '498180536@qq.com'
+[32mINFO    [0m log:test_04_update_user.py:37 *************** 开始执行用例 ***************

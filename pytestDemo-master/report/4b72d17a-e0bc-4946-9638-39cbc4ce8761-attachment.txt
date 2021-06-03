@@ -1,0 +1,12 @@
+[2021-06-02 01:51:25,490][test_03_login.py 49][INFO]: *************** 开始执行用例 ***************
+[2021-06-02 01:51:25,491][rest_client.py 53][INFO]: 接口请求地址 ==>> http://10.5.15.116/videt-wisdom-star/user/checkUsername
+[2021-06-02 01:51:25,491][rest_client.py 54][INFO]: 接口请求方式 ==>> POST
+[2021-06-02 01:51:25,492][rest_client.py 57][INFO]: 接口请求头 ==>> {
+    "Content-Type": "application/json"
+}
+[2021-06-02 01:51:25,492][rest_client.py 58][INFO]: 接口请求 params 参数 ==>> null
+[2021-06-02 01:51:25,492][rest_client.py 59][INFO]: 接口请求体 data 参数 ==>> "{\"username\": \"admin\"}"
+[2021-06-02 01:51:25,493][rest_client.py 60][INFO]: 接口请求体 json 参数 ==>> null
+[2021-06-02 01:51:25,493][rest_client.py 61][INFO]: 接口上传附件 files 参数 ==>> None
+[2021-06-02 01:51:25,493][rest_client.py 62][INFO]: 接口 cookies 参数 ==>> null
+[2021-06-02 01:51:25,511][test_03_login.py 10][INFO]: 步骤1 ==>> 登录用户：admin

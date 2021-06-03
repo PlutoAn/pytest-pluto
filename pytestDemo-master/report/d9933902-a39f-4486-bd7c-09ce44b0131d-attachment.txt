@@ -1,0 +1,19 @@
+[32mINFO    [0m log:rest_client.py:53 接口请求地址 ==>> http://10.5.15.116/videt-wisdom-star/user/login
+[32mINFO    [0m log:rest_client.py:54 接口请求方式 ==>> POST
+[32mINFO    [0m log:rest_client.py:57 接口请求头 ==>> {
+    "Content-Type": "application/x-www-form-urlencoded"
+}
+[32mINFO    [0m log:rest_client.py:58 接口请求 params 参数 ==>> null
+[32mINFO    [0m log:rest_client.py:59 接口请求体 data 参数 ==>> {
+    "username": "admin",
+    "password": "123456"
+}
+[32mINFO    [0m log:rest_client.py:60 接口请求体 json 参数 ==>> null
+[32mINFO    [0m log:rest_client.py:61 接口上传附件 files 参数 ==>> None
+[32mINFO    [0m log:rest_client.py:62 接口 cookies 参数 ==>> null
+[32mINFO    [0m log:conftest.py:40 前置步骤 ==>> 管理员 admin 登录，返回信息 为：123456
+[32mINFO    [0m log:conftest.py:29 ******************************
+[32mINFO    [0m log:conftest.py:30 前置步骤开始 ==>> 清理数据
+[32mINFO    [0m log:conftest.py:97 修改用户操作：手工修改用户的手机号，以便用例重复执行
+[32mINFO    [0m log:conftest.py:98 执行SQL：UPDATE t_user SET phone = '1008612' WHERE email = '498180536@qq.com'
+[32mINFO    [0m log:test_04_update_user.py:37 *************** 开始执行用例 ***************
