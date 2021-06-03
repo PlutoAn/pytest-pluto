@@ -32,7 +32,8 @@ class TestUpdate():
                              "except_result, except_code, except_msg",
                              api_data["test_update_user"])
     @pytest.mark.usefixtures("update_user_telephone")
-    def test_update_user(self, login_fixture, id, new_password, new_telephone, new_sex, new_address,
+    def test_update_user(self, login_fixture, id, new_p
+        assword, new_telephone, new_sex, new_address,
                          except_result, except_code, except_msg):
         logger.info("*************** 开始执行用例 ***************")
         user_info = login_fixture
