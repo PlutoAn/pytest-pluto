@@ -23,7 +23,7 @@ class User(RestClient):
         return self.get("/users/{}".format(username), **kwargs)
 
     def register(self, **kwargs):
-        return self.post("/register", **kwargs)
+        return self.post("/user/register", **kwargs)
 
     def login(self, **kwargs):
         return self.post("/user/login", **kwargs)

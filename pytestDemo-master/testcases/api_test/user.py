@@ -40,36 +40,51 @@ def get_one_user_info(username):
     return result
 
 
-def register_user(username, password, telephone, sex="", address=""):
+def register_user(username, nickName, departmentId, sysRoleId, oneCartoon, certificateType, certificateNum, phone,
+                  email, password, confirmPassword, userType):
     """
     注册用户信息
-    :param username: 用户名
+    :param username: 账号
+    :parm  nickname：用户名
+    :parm departmentId：部门id
+    :parm sysRoleId:系统id
     :param password: 密码
-    :param telephone: 手机号
-    :param sex: 性别
-    :param address: 联系地址
+    :param phone: 手机号
+    :param email: 邮箱
+    :param confirmPassword: 确认密码
     :return: 自定义的关键字返回结果 result
     """
     result = ResultBase()
     json_data = {
         "username": username,
+        "nickName": nickName,
+        "departmentId": departmentId,
+        "sysRoleId": sysRoleId,
+        "oneCartoon": oneCartoon,
+        "certificateType": certificateType,
+        "certificateNum": certificateNum,
+        "phone": phone,
+        "email": email,
         "password": password,
-        "sex": sex,
-        "telephone": telephone,
-        "address": address
+        "confirmPassword": confirmPassword,
+        "ipRestrictions": [
+
+        ],
+        "userType": userType
     }
     header = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": '5e4fa1c1-808a-42bf-a6fa-636e821c003d'
     }
     res = user.register(json=json_data, headers=header)
     result.success = False
-    if res.json()["code"] == 0:
+    if res.json()["code"] == 200:
         result.success = True
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["message"])
-    result.message = res.json()["message"]
-    result.response = res
-    logger.info("注册用户 ==>> 返回结果 ==>> {}".format(result.response.text))
+        result.message = res.json()["message"]
+        result.response = res
+        logger.info("注册用户 ==>> 返回结果 ==>> {}".format(result.response.text))
     return result
 
 
@@ -119,10 +134,10 @@ def login_user(username, password):
     if res.json()["code"] == 200:
         result.success = True
         result.token = res.json()["data"]
-        print(result.token)
     else:
         result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["message"])
     result.message = res.json()["message"]
+    # print(res.text)
     result.response = res
     logger.info("登录用户 ==>> 返回结果 ==>> {}".format(result.response.text))
     return result
@@ -205,4 +220,4 @@ def delete_user(username, admin_user, token):
 
 
 if __name__ == '__main__':
-    check_user("admin")
+    pass

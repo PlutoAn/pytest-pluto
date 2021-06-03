@@ -45,7 +45,7 @@ def login_fixture():
     username = base_data["init_admin_user"]["username"]
     password = base_data["init_admin_user"]["password"]
     header = {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json;charset=UTF-8"
     }
     payload = {
         "username": username,
@@ -96,3 +96,7 @@ def update_user_telephone():
     step_first()
     logger.info("修改用户操作：手工修改用户的手机号，以便用例重复执行")
     logger.info("执行SQL：{}".format(update_sql))
+
+
+if __name__ == '__main__':
+    login_fixture("admin",123456)

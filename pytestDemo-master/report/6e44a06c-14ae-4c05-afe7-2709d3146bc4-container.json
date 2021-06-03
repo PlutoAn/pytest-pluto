@@ -1,1 +1,0 @@
-{"uuid": "d531a417-5fb5-4ba1-a973-b5970fde69b9", "children": ["2e040151-b864-4be3-9fa9-54dd4d6f45c6"], "befores": [{"name": "update_user_telephone", "status": "passed", "steps": [{"name": "前置步骤 ==>> 清理数据", "status": "passed", "start": 1622567026745, "stop": 1622567026747}], "start": 1622567026734, "stop": 1622567026747}], "start": 1622567026734, "stop": 1622567026773}

@@ -1,9 +1,0 @@
-[32mINFO    [0m log:mysql_operate.py:54 操作MySQL出现错误，错误原因：(1054, "Unknown column 'nicl_name' in 'field list'")
-[32mINFO    [0m log:conftest.py:29 ******************************
-[32mINFO    [0m log:conftest.py:30 前置步骤开始 ==>> 清理数据
-[32mINFO    [0m log:conftest.py:65 删除用户操作：插入新用户--准备用于删除用户
-[32mINFO    [0m log:conftest.py:66 执行前置SQL：INSERT INTO t_user(username, password, nicl_name, email, phone, department_id,status,user_type) VALUES('plutoan', '123456', '黄安', '498180536@qq.com', '1008611','350d0d84ccaf49f9912bc95aae1ac0d1', '1','1')
-[32mINFO    [0m log:test_05_delete_user.py:34 *************** 开始执行用例 ***************
-[32mINFO    [0m log:conftest.py:35 后置步骤开始 ==>> 清理数据
-[32mINFO    [0m log:conftest.py:72 删除用户操作：手工清理处理失败的数据
-[32mINFO    [0m log:conftest.py:73 执行后置SQL：DELETE FROM t_user WHERE username = 'plutoan'

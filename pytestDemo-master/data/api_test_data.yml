@@ -10,26 +10,26 @@ test_get_get_one_user_info:
   - [ "wintest1111", False, "1004", "查不到相关用户" ]
 
 test_register_user:
-  # 用户名,密码,手机号,性别,联系地址,期望结果,期望返回码,期望返回信息
-  # username, password, telephone, sex, address, except_result, except_code, except_msg
-  - [ "测试test", "123456", "13599999999", "1", "深圳市宝安区", True, 0, "注册成功" ]
-  - [ "测试test", "123456", "13599999999", "3", "深圳市宝安区", False, 2003, "输入的性别只能是 0(男) 或 1(女)" ]
-  - [ "wintest4", "123456", "13599999999", "1", "深圳市宝安区", False, 2002, "用户名已存在" ]
-  -
+  # 账号,用户名,部门,系统角色,学工号,账户类型,证件类型,证件号码,手机号,电子邮箱,密码,确认密码,期望结果,期望返回码,期望返回信息
+  # "username","nickName","departmentId","sysRoleId","oneCartoon","certificateType","certificateNum","phone",
+  #"email","password","confirmPassword","ipRestrictions":[],"userType
+  #,except_result, except_code, except_msg
+  - [ "zhuyu", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498180536@qq.com","123456","123456",1,False, 100036, "账号重复" ]
 test_check_user:
   # 用户名,期望结果,期望返回码,期望返回信息
   # username,  except_result,except_code, except_msg
   - [ "admin", True, 200, "success" ]
-  - [ "admin1",True,200,"账号不存在，请重新输入或联系管理员！" ]
-  - [ "test003",True,200,"账号不存在，请重新输入或联系管理员！" ]
+  - [ "admin",False,200,"您的密码不正确，请确认密码！" ]
+  - [ "te03222",  False, 100022, "账号不存在，请重新输入或联系管理员！" ]
   - [ "测试test",  False, 100022, "账号不存在，请重新输入或联系管理员！" ]
 test_login_user:
   # 用户名,密码,期望结果,期望返回码,期望返回信息
-  # username, password,  except_result,except_code, except_msg
+  # username, password,except_result,except_code, except_msg
   - [ "admin", "123456",True, 200, "success" ]
-  - [ "huangan","123456",True,200,"success" ]
-  - [ "test003","123456",False,200,"账号不存在，请重新输入或联系管理员！" ]
-  - [ "测试test", "123456", False, 100022, "账号不存在，请重新输入或联系管理员！" ]
+  - [ "huangan","123456",False,100017,"该用户不存在" ]
+  - [ "test003","123456",True,200,"success" ]
+  - [ "测试test", "123456", False, 100017, "该用户不存在" ]
 
 
 test_update_user:

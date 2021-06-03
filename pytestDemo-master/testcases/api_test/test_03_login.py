@@ -30,9 +30,9 @@ class TestUserLogin():
         assert result.success == except_result, result.error
         assert result.response.status_code == 200
         assert result.success == except_result, result.error
-        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json()["code"]))
+        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get("code")))
         # print(except_code)
-        assert result.response.json()["code"] == except_code
+        assert result.response.json().get("code") == except_code
         # print(result.response.json()["code"])
         assert except_msg in result.message
         logger.info("***************用例执行结束***************")
@@ -50,12 +50,11 @@ class TestUserLogin():
         result = check_user(username)
         step_1(username)
         assert result.success == except_result, result.error
+        print(result.success)
         assert result.response.status_code == 200
         assert result.success == except_result, result.error
-        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json()["code"]))
-        print(except_code)
-        assert result.response.json()["code"] == except_code
-        print(result.response.json()["code"])
+        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get("code")))
+        assert result.response.json().get("code") == except_code
         assert except_msg in result.message
         logger.info("***************用例执行结束***************")
 
