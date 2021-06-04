@@ -1,5 +1,6 @@
 import pytest
 import allure
+from testcases.api_test.user import login_user
 from testcases.api_test.user import register_user
 from testcases.conftest import api_data
 from testcases.scenario_test.operation.logger import logger
@@ -16,8 +17,8 @@ def step_1(username, nickName, departmentId, sysRoleId, oneCartoon, certificateT
 
 
 @allure.step("前置登录步骤 ==>> 管理员登录")
-def step_login(admin_user, token):
-    logger.info("前置登录步骤 ==>> 管理员 {} 登录 ==>> 返回的 token 为：{}".format(admin_user, token))
+def step_login1(username, token):
+    logger.info("前置登录步骤 ==>> 管理员 {} 登录 ==>> 返回的 token 为：{}".format(username, token))
 
 
 # @  allure.step("前置登录步骤 ==>> 管理员登录")
@@ -29,7 +30,7 @@ def step_login(admin_user, token):
 @allure.epic("针对单个接口的测试")
 @allure.feature("用户注册模块")
 class TestUserRegister():
-    """用户注册"""
+    """用户注册/添加账号"""
 
     @allure.story("用例--注册用户信息")
     @allure.description("该用例是针对获取用户注册接口的测试")
@@ -48,7 +49,12 @@ class TestUserRegister():
                            certificateNum, phone, email, password, confirmPassword, userType,
                            except_result, except_code, except_msg):
         logger.info("*************** 开始执行用例 ***************")
-        result = register_user(username, nickName, departmentId, sysRoleId, oneCartoon, certificateType,
+        user_info = login_fixture
+        token = user_info
+        # admin_user = user_info.response.json().get("username")
+        # token = user_info.get("login_info").get("data")
+        # step_login1(token)
+        result = register_user(username, token, nickName, departmentId, sysRoleId, oneCartoon, certificateType,
                                certificateNum,
                                phone, email, password, confirmPassword, userType)
         step_1(username, nickName, departmentId, sysRoleId, oneCartoon, certificateType, certificateNum, phone,
@@ -63,5 +69,5 @@ class TestUserRegister():
 
 
 if __name__ == '__main__':
-    # pytest.main(["-q", "-s", "test_02_register.py"])
-    step_login('addmin', 123456)
+    pytest.main(["-q", "-s", "test_02_register.py"])
+    # step_login('addmin', 123456)

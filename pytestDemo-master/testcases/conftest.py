@@ -1,6 +1,7 @@
 import pytest
 import os
 import allure
+import json
 from api.user import user
 from common.mysql_operate import db
 from common.read_data import data
@@ -51,9 +52,11 @@ def login_fixture():
         "username": username,
         "password": password
     }
-    loginInfo = user.login(data=payload, headers=header)
+    loginInfo = user.login(data=json.dumps(payload), headers=header)
     step_login(username, password)
-    yield loginInfo.json()
+    token = loginInfo.json()["data"]
+    print(token, loginInfo.json())
+    yield token
 
 
 @pytest.fixture(scope="function")
@@ -99,4 +102,4 @@ def update_user_telephone():
 
 
 if __name__ == '__main__':
-    login_fixture("admin",123456)
+    pass

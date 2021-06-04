@@ -4,18 +4,26 @@ test_get_all_user_info:
   - [ True, 0, "查询成功" ]
 
 test_get_get_one_user_info:
-  # 用户名,期望结果,期望返回码,期望返回信息
-  # username, except_result, except_code, except_msg
-  - [ "test004", True, 200, "查询成功" ]
-  - [ "wintest1111", False, "1004", "查不到相关用户" ]
-
+  # 期望结果,期望返回码,期望返回信息
+  # except_result, except_code, except_msg
+  - [  True, 200, "success" ]
 test_register_user:
   # 账号,用户名,部门,系统角色,学工号,账户类型,证件类型,证件号码,手机号,电子邮箱,密码,确认密码,期望结果,期望返回码,期望返回信息
   # "username","nickName","departmentId","sysRoleId","oneCartoon","certificateType","certificateNum","phone",
   #"email","password","confirmPassword","ipRestrictions":[],"userType
   #,except_result, except_code, except_msg
-  - [ "zhuyu", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+  - [ "zhuyu01", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
       "15979503844","498180536@qq.com","123456","123456",1,False, 100036, "账号重复" ]
+  - [ "zhuyu02", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498180536@qq.com","123456","123456",1,False, 100036, "账号重复" ]
+  - [ "zhuyu03", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498180536@qq.com","123456","123456",1,False, 100002, "该邮箱已注册！" ]
+  - [ "zhuyu04", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498183536@qq.com","123456","123456",1,False, 100003, "该手机号已注册！" ]
+  - [ "zhuyu05", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "159795844","49816@qq.com","1234","1234",1,False, 100042, "您的密码长度不符，请联系管理员！" ]
+  - [ "zhuyu06", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15973844","80536@qq.com","12456","123456",1,False, 100030, "密码不一致" ]
 test_check_user:
   # 用户名,期望结果,期望返回码,期望返回信息
   # username,  except_result,except_code, except_msg

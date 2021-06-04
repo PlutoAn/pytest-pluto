@@ -40,8 +40,8 @@ def get_one_user_info(username):
     return result
 
 
-def register_user(username, nickName, departmentId, sysRoleId, oneCartoon, certificateType, certificateNum, phone,
-                  email, password, confirmPassword, userType):
+def register_user(username, token, nickName, departmentId, sysRoleId, oneCartoon, certificateType, certificateNum,
+                  phone, email, password, confirmPassword, userType):
     """
     注册用户信息
     :param username: 账号
@@ -74,7 +74,7 @@ def register_user(username, nickName, departmentId, sysRoleId, oneCartoon, certi
     }
     header = {
         "Content-Type": "application/json",
-        "Authorization": '5e4fa1c1-808a-42bf-a6fa-636e821c003d'
+        "Authorization": token
     }
     res = user.register(json=json_data, headers=header)
     result.success = False
@@ -140,6 +140,29 @@ def login_user(username, password):
     # print(res.text)
     result.response = res
     logger.info("登录用户 ==>> 返回结果 ==>> {}".format(result.response.text))
+    return result
+
+
+def get_user(token):
+    """
+    获取用户信息
+    """
+    result = ResultBase()
+    header = {
+        "Content-Type": "application/json",
+        "Authorization": token
+    }
+    res = user.getuser(headers=header)
+    result.success = False
+    if res.json()["code"] == 200:
+        result.success = True
+        result.userid = res.json()["data"].get("userid")
+    else:
+        result.error = "接口返回码是 【 {} 】, 返回信息：{} ".format(res.json()["code"], res.json()["message"])
+    result.message = res.json()["message"]
+    result.response = res
+    logger.info(
+        "用户信息 ==>> 返回结果 ==>> {}".format(json.dumps(json.loads(result.response.text), ensure_ascii=False, indent=4)))
     return result
 
 
@@ -221,3 +244,4 @@ def delete_user(username, admin_user, token):
 
 if __name__ == '__main__':
     pass
+    # get_user('e24a40eb-b5f1-4d25-a6bb-d844093a19d4')

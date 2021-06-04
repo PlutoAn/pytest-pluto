@@ -34,8 +34,8 @@ class User(RestClient):
     def delete(self, name, **kwargs):
         return self.post("/delete/user/{}".format(name), **kwargs)
 
-    def get(self, url, **kwargs):
-        return self.post("/user{}".format(user), **kwargs)
+    def getuser(self,  **kwargs):
+        return self.get("/user", **kwargs)
 
     def check(self,  **kwargs):
         return self.post("/user/checkUsername", **kwargs)
