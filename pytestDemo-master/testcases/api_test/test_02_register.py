@@ -4,6 +4,7 @@ from testcases.api_test.user import login_user
 from testcases.api_test.user import register_user
 from testcases.conftest import api_data
 from testcases.scenario_test.operation.logger import logger
+from testcases.conftest import login_fixture
 
 
 @allure.step("步骤1 ==>> 注册用户")
@@ -70,4 +71,3 @@ class TestUserRegister():
 
 if __name__ == '__main__':
     pytest.main(["-q", "-s", "test_02_register.py"])
-    # step_login('addmin', 123456)

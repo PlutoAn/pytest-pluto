@@ -2,7 +2,7 @@ import pytest
 import allure
 from testcases.api_test.user import register_user
 from testcases.scenario_test.operation.logger import logger
-
+globals()
 
 @allure.step("步骤1 ==>> 注册用户")
 def step_1(username, password, telephone, sex, address):

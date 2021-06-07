@@ -8,8 +8,6 @@ from common.read_data import data
 from testcases.scenario_test.operation.logger import logger
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-
-
 def get_data(yaml_file_name):
     try:
         data_file_path = os.path.join(BASE_PATH, "data", yaml_file_name)

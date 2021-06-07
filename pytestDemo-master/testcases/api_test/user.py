@@ -114,7 +114,7 @@ def check_user(username):
     return result
 
 
-def login_user(username, password):
+def login_user(username,password):
     """
     登录用户
     :param username: 用户名
@@ -127,7 +127,7 @@ def login_user(username, password):
         "password": password
     }
     header = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     }
     res = user.login(data=json.dumps(payload), headers=header)
     result.success = False

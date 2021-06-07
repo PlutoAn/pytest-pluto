@@ -9,7 +9,6 @@ from testcases.scenario_test.operation.logger import logger
 def step_1(username):
     logger.info("步骤1 ==>> 登录用户：{}".format(username))
 
-
 @allure.severity(allure.severity_level.NORMAL)
 @allure.epic("针对单个接口的测试")
 @allure.feature("用户登录模块")
@@ -17,8 +16,8 @@ class TestUserLogin():
 
     @allure.story("用例--登录用户")
     @allure.description("该用例是针对获取用户登录接口的测试")
-    @allure.issue("http://10.5.15.116/#/home", name="点击，跳转到对应BUG的链接地址")
-    @allure.testcase("暂无", name="点击，跳转到对应用例的链接地址")
+    @allure.issue("http://10.5.15.151/zentao/bug-browse-3-0-unclosed-0-id_desc.html", name="点击，跳转到对应BUG的链接地址")
+    @allure.testcase("http://10.5.15.151/zentao/bug-browse-3-0-unclosed-0-id_desc.html", name="点击，跳转到对应用例的链接地址")
     @allure.title("测试数据：【 {username}，{password}，{except_result}，{except_code}，{except_msg}】")
     @pytest.mark.single
     @pytest.mark.parametrize("username, password, except_result, except_code, except_msg",
