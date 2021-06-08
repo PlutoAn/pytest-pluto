@@ -52,9 +52,6 @@ class TestUserRegister():
         logger.info("*************** 开始执行用例 ***************")
         user_info = login_fixture
         token = user_info
-        # admin_user = user_info.response.json().get("username")
-        # token = user_info.get("login_info").get("data")
-        # step_login1(token)
         result = register_user(username, token, nickName, departmentId, sysRoleId, oneCartoon, certificateType,
                                certificateNum,
                                phone, email, password, confirmPassword, userType)

@@ -34,11 +34,14 @@ class User(RestClient):
     def delete(self, name, **kwargs):
         return self.post("/delete/user/{}".format(name), **kwargs)
 
-    def getuser(self,  **kwargs):
+    def getuser(self, **kwargs):
         return self.get("/user", **kwargs)
 
-    def check(self,  **kwargs):
+    def check(self, **kwargs):
         return self.post("/user/checkUsername", **kwargs)
+
+    def insertArchiveTable(self, **kwargs):
+        return self.post("/archive/insertArchiveTable", **kwargs)
 
 
 user = User(api_root_url)

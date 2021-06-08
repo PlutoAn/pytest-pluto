@@ -242,6 +242,7 @@ def delete_user(username, admin_user, token):
     return result
 
 
+
 if __name__ == '__main__':
     pass
     # get_user('e24a40eb-b5f1-4d25-a6bb-d844093a19d4')

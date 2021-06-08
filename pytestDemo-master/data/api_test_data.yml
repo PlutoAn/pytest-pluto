@@ -22,8 +22,8 @@ test_register_user:
       "15979503844","498124536@qq.com","123456","123456",1,False, 100003, "该手机号已注册！" ]
   - [ "zhuyu05", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
       "159795844","49816@qq.com","1234","1234",1,False, 100042, "您的密码长度不符，请联系管理员！" ]
-  - [ "zhuyu06", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
-      "15973844","80536@qq.com","12456","123456",1,False, 100030, "密码不一致" ]
+  - [ "zhuyu07", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+        "159795844","49816@qq.com","1234","134",1,False, 100042, "您的密码长度不符，请联系管理员！" ]
 test_check_user:
   # 用户名,期望结果,期望返回码,期望返回信息
   # username,  except_result,except_code, except_msg
@@ -39,8 +39,6 @@ test_login_user:
   - [ "huangan","123456",False,100017,"该用户不存在" ]
   - [ "test003","123456",True,200,"success" ]
   - [ "测试test", "123456", False, 100017, "该用户不存在" ]
-
-
 test_update_user:
   # 修改的用户ID,用户名,手机号，所属部门，系统角色,学工号,账户类型,证件类型,证件号码,联系方式,电子邮箱，期望结果,期望返回码,期望返回信息
   # id, new_password, new_telephone, new_sex, new_address, except_result, except_code, except_msg
@@ -53,3 +51,25 @@ test_delete_user:
   # username, except_result, except_code, except_msg
   - [ "测试test", True, 0, "删除用户信息成功" ]
   - [ "wintest3", False, 3006, "该用户不允许删除" ]
+#案卷模板
+catTemplateId: ['0262f2ed5e10408abf9656c0e27eff40',
+                 'a_0',#默认著录格式模板
+                 'a_10',#进度案卷模板
+                 'a_11',
+                 'a_12',
+                 'a_13',
+                 'a_14',
+                 'a_2',
+                 'a_3',
+                 'a_4',
+                 'a_5',
+                 'a_6',
+                 'a_8',
+                 'a_9']
+test_insertArchiveTable:
+  #案卷模板，档号检查，分类id，档案代码，部门id，文件模板，档案表名称，整理方式，期望结果，期望返回码，期望返回信息
+  # catTemplateId, checkNoRule, classId, code,remark, departmentId, fileTemplateId,name, orderWay,except_result,except_code,except_msg
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','呵呵哒',1,False,100021,"代码已存在"] #档案表代码已存在
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','哈哈哈',1,True,200,""] #
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','嘿嘿嘿',1,True,200,"代码已存在"] #
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','哦哦哦',1,True,100021,"代码已存在"] #
