@@ -9,6 +9,7 @@ from testcases.scenario_test.operation.logger import logger
 def step_1(username):
     logger.info("步骤1 ==>> 登录用户：{}".format(username))
 
+
 @allure.severity(allure.severity_level.NORMAL)
 @allure.epic("针对单个接口的测试")
 @allure.feature("用户登录模块")
