@@ -65,6 +65,7 @@ def inserdb():
         creator = str1.join(random.choice('0123456789') for i in range(16))
         modifier = creator
         create_time = time.strftime('%Y-%m-%d %H:%M:%S ', time.localtime(time.time()))  # 创建时间
+        
         update_time = create_time  # 更新时间
         deleted = 0
         remark = ''
