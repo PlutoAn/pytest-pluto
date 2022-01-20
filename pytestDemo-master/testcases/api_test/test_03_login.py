@@ -17,8 +17,8 @@ class TestUserLogin():
 
     @allure.story("用例--登录用户")
     @allure.description("该用例是针对获取用户登录接口的测试")
-    @allure.issue("http://10.5.15.116/#/home", name="点击，跳转到对应BUG的链接地址")
-    @allure.testcase("暂无", name="点击，跳转到对应用例的链接地址")
+    @allure.issue("http://10.5.15.151/zentao/bug-browse-3-0-unclosed-0-id_desc.html", name="点击，跳转到对应BUG的链接地址")
+    @allure.testcase("http://10.5.15.151/zentao/bug-browse-3-0-unclosed-0-id_desc.html", name="点击，跳转到对应用例的链接地址")
     @allure.title("测试数据：【 {username}，{password}，{except_result}，{except_code}，{except_msg}】")
     @pytest.mark.single
     @pytest.mark.parametrize("username, password, except_result, except_code, except_msg",
@@ -30,9 +30,9 @@ class TestUserLogin():
         assert result.success == except_result, result.error
         assert result.response.status_code == 200
         assert result.success == except_result, result.error
-        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json()["code"]))
+        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get("code")))
         # print(except_code)
-        assert result.response.json()["code"] == except_code
+        assert result.response.json().get("code") == except_code
         # print(result.response.json()["code"])
         assert except_msg in result.message
         logger.info("***************用例执行结束***************")
@@ -50,12 +50,11 @@ class TestUserLogin():
         result = check_user(username)
         step_1(username)
         assert result.success == except_result, result.error
+        print(result.success)
         assert result.response.status_code == 200
         assert result.success == except_result, result.error
-        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json()["code"]))
-        print(except_code)
-        assert result.response.json()["code"] == except_code
-        print(result.response.json()["code"])
+        logger.info("code ==>> 期望结果：{}， 实际结果：【 {} 】".format(except_code, result.response.json().get("code")))
+        assert result.response.json().get("code") == except_code
         assert except_msg in result.message
         logger.info("***************用例执行结束***************")
 

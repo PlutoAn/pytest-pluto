@@ -1,14 +1,13 @@
 import pytest
 import os
 import allure
+import json
 from api.user import user
 from common.mysql_operate import db
 from common.read_data import data
 from testcases.scenario_test.operation.logger import logger
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-
-
 def get_data(yaml_file_name):
     try:
         data_file_path = os.path.join(BASE_PATH, "data", yaml_file_name)
@@ -45,15 +44,17 @@ def login_fixture():
     username = base_data["init_admin_user"]["username"]
     password = base_data["init_admin_user"]["password"]
     header = {
-        "Content-Type": "application/x-www-form-urlencoded"
+        "Content-Type": "application/json;charset=UTF-8"
     }
     payload = {
         "username": username,
         "password": password
     }
-    loginInfo = user.login(data=payload, headers=header)
+    loginInfo = user.login(data=json.dumps(payload), headers=header)
     step_login(username, password)
-    yield loginInfo.json()
+    token = loginInfo.json()["data"]
+    print(token, loginInfo.json())
+    yield token
 
 
 @pytest.fixture(scope="function")
@@ -96,3 +97,7 @@ def update_user_telephone():
     step_first()
     logger.info("修改用户操作：手工修改用户的手机号，以便用例重复执行")
     logger.info("执行SQL：{}".format(update_sql))
+
+
+if __name__ == '__main__':
+    pass

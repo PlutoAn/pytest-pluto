@@ -1,10 +1,10 @@
 init_admin_user:
-  username: "admin"
-  password: "123456"
+  username: test004
+  password: 123456
 
 init_sql:
   insert_delete_user:
-    - "INSERT INTO t_user(username, password, nick_name, email, phone, department_id,status,user_type) VALUES('plutoan', '123456', '黄安', '498180536@qq.com', '1008611','350d0d84ccaf49f9912bc95aae1ac0d1', '1','1')"
+    - "INSERT INTO t_user VALUES('huangan', '123456')"
     - "DELETE FROM t_user WHERE username = 'plutoan'"
   delete_register_user: "DELETE FROM t_user WHERE username = 'plutoan'"
-  update_user_telephone: "UPDATE t_user SET phone = '1008612' WHERE email = '498180536@qq.com'"
+  update_user_telephone: "UPDATE t_user SET phone = '1  008612' WHERE email = '498180536@qq.com'"

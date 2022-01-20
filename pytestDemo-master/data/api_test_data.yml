@@ -4,34 +4,41 @@ test_get_all_user_info:
   - [ True, 0, "查询成功" ]
 
 test_get_get_one_user_info:
-  # 用户名,期望结果,期望返回码,期望返回信息
-  # username, except_result, except_code, except_msg
-  - [ "test004", True, 200, "查询成功" ]
-  - [ "wintest1111", False, "1004", "查不到相关用户" ]
-
+  # 期望结果,期望返回码,期望返回信息
+  # except_result, except_code, except_msg
+  - [ True, 200, "success" ]
 test_register_user:
-  # 用户名,密码,手机号,性别,联系地址,期望结果,期望返回码,期望返回信息
-  # username, password, telephone, sex, address, except_result, except_code, except_msg
-  - [ "测试test", "123456", "13599999999", "1", "深圳市宝安区", True, 0, "注册成功" ]
-  - [ "测试test", "123456", "13599999999", "3", "深圳市宝安区", False, 2003, "输入的性别只能是 0(男) 或 1(女)" ]
-  - [ "wintest4", "123456", "13599999999", "1", "深圳市宝安区", False, 2002, "用户名已存在" ]
-  -
+  # 账号,用户名,部门,系统角色,学工号,账户类型,证件类型,证件号码,手机号,电子邮箱,密码,确认密码,期望结果,期望返回码,期望返回信息
+  # "username","nickName","departmentId","sysRoleId","oneCartoon","certificateType","certificateNum","phone",
+  #"email","password","confirmPassword","ipRestrictions":[],"userType
+  #,except_result, except_code, except_msg
+  - [ "zhuyu01", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498180536@qq.com","123456","123456",1,False,100036, "账号重复" ]
+  - [ "zhuyu021", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498180536@qq.com","123456","123456",1,False, 100036, "账号重复" ]
+  - [ "zhuyu0131", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498180536@qq.com","123456","123456",1,False, 100002, "该邮箱已注册！" ]
+  - [ "zhuyu9004", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "15979503844","498124536@qq.com","123456","123456",1,False, 100003, "该手机号已注册！" ]
+  - [ "zhuyu05", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+      "159795844","49816@qq.com","1234","1234",1,False, 100042, "您的密码长度不符，请联系管理员！" ]
+  - [ "zhuyu07", "朱鱼", "350d0d84ccaf49f9912bc95aae1ac0d1", "cb6cbbbf98724cec967f08e5f5df468c", "", "","",
+        "159795844","49816@qq.com","1234","134",1,False, 100042, "您的密码长度不符，请联系管理员！" ]
 test_check_user:
   # 用户名,期望结果,期望返回码,期望返回信息
   # username,  except_result,except_code, except_msg
   - [ "admin", True, 200, "success" ]
-  - [ "admin1",True,200,"账号不存在，请重新输入或联系管理员！" ]
-  - [ "test003",True,200,"账号不存在，请重新输入或联系管理员！" ]
+  - [ "admin",False,200,"您的密码不正确，请确认密码！" ]
+  - [ "te03222",  False, 100022, "账号不存在，请重新输入或联系管理员！" ]
   - [ "测试test",  False, 100022, "账号不存在，请重新输入或联系管理员！" ]
+  - [ "-=-====",False,100006,"参数错误" ]
 test_login_user:
   # 用户名,密码,期望结果,期望返回码,期望返回信息
-  # username, password,  except_result,except_code, except_msg
+  # username, password,except_result,except_code, except_msg
   - [ "admin", "123456",True, 200, "success" ]
-  - [ "huangan","123456",True,200,"success" ]
-  - [ "test003","123456",False,200,"账号不存在，请重新输入或联系管理员！" ]
-  - [ "测试test", "123456", False, 100022, "账号不存在，请重新输入或联系管理员！" ]
-
-
+  - [ "huangan","123456",False,100017,"该用户不存在" ]
+  - [ "test003","123456",True,200,"success" ]
+  - [ "测试test", "123456", False, 100017, "该用户不存在" ]
 test_update_user:
   # 修改的用户ID,用户名,手机号，所属部门，系统角色,学工号,账户类型,证件类型,证件号码,联系方式,电子邮箱，期望结果,期望返回码,期望返回信息
   # id, new_password, new_telephone, new_sex, new_address, except_result, except_code, except_msg
@@ -44,3 +51,25 @@ test_delete_user:
   # username, except_result, except_code, except_msg
   - [ "测试test", True, 0, "删除用户信息成功" ]
   - [ "wintest3", False, 3006, "该用户不允许删除" ]
+#案卷模板
+catTemplateId: ['0262f2ed5e10408abf9656c0e27eff40',
+                 'a_0',#默认著录格式模板
+                 'a_10',#进度案卷模板
+                 'a_11',
+                 'a_12',
+                 'a_13',
+                 'a_14',
+                 'a_2',
+                 'a_3',
+                 'a_4',
+                 'a_5',
+                 'a_6',
+                 'a_8',
+                 'a_9']
+test_insertArchiveTable:
+  #案卷模板，档号检查，分类id，档案代码，部门id，文件模板，档案表名称，整理方式，期望结果，期望返回码，期望返回信息
+  # catTemplateId, checkNoRule, classId, code,remark, departmentId, fileTemplateId,name, orderWay,except_result,except_code,except_msg
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','呵呵哒',1,False,100021,"代码已存在"] #档案表代码已存在
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','哈哈哈',1,True,200,""] #
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','嘿嘿嘿',1,True,200,"代码已存在"] #
+  - ['0262f2ed5e10408abf9656c0e27eff40',3,'622a82a025964be28fd1b45c7ca72233','ctm','呵呵','350d0d84ccaf49f9912bc95aae1ac0d1','bb2b88e87a474540a960b9cdd5508ca4','哦哦哦',1,True,100021,"代码已存在"] #
